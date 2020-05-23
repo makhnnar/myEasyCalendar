@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_day_view"
+        android:icon="@drawable/icon_day_24"
+        android:title="@string/title_day_view" />
+
+    <item
+        android:id="@+id/navigation_week_view"
+        android:icon="@drawable/icon_week_24"
+        android:title="@string/title_week_view" />
+
+    <item
+        android:id="@+id/navigation_month_view"
+        android:icon="@drawable/icon_month_26"
+        android:title="@string/title_month_view" />
+
+    <item
+        android:id="@+id/navigation_year_view"
+        android:icon="@drawable/icon_year_24"
+        android:title="@string/title_year_view" />
+
+</menu>

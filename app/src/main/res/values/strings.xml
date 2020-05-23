@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyEasyCalendar</string>
+    <string name="title_day_view">Hoy</string>
+    <string name="title_week_view">Semana</string>
+    <string name="title_month_view">Mes</string>
+    <string name="title_year_view">Año</string>
+
+    <string name="title_activity_event">EventActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>

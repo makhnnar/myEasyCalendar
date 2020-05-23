@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_day_view">
+
+    <fragment
+        android:id="@+id/navigation_day_view"
+        android:name="com.easyappsolution.myeasycalendar.ui.day.DayFragment"
+        android:label="@string/title_day_view"
+        tools:layout="@layout/fragment_day_view" />
+
+    <fragment
+        android:id="@+id/navigation_week_view"
+        android:name="com.easyappsolution.myeasycalendar.ui.week.WeekFragment"
+        android:label="@string/title_week_view"
+        tools:layout="@layout/fragment_week_view" />
+
+    <fragment
+        android:id="@+id/navigation_month_view"
+        android:name="com.easyappsolution.myeasycalendar.ui.month.MonthFragment"
+        android:label="@string/title_month_view"
+        tools:layout="@layout/fragment_month_view" />
+
+    <fragment
+        android:id="@+id/navigation_year_view"
+        android:name="com.easyappsolution.myeasycalendar.ui.year.YearFragment"
+        android:label="@string/title_year_view"
+        tools:layout="@layout/fragment_month_view" />
+
+</navigation>
