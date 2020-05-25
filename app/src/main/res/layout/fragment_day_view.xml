@@ -15,4 +15,34 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/view_holder_event" />
 
+    <ProgressBar
+        android:id="@+id/rlBase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--
+    Convertir esto en item, aplica un blur durante la carga
+    <RelativeLayout
+        android:id="@+id/rlBase1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:alpha="0.4"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

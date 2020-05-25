@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -18,26 +17,45 @@ class DayFragment : Fragment(),DayAdapter.OnClickItemListener {
 
     private lateinit var dayViewModel: DayViewModel
 
-    private val adapter = DayAdapter(this)
+    private lateinit var adapter : DayAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dayViewModel =
-            ViewModelProviders.of(this).get(DayViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_day_view, container, false)
+        return inflater.inflate(
+            R.layout.fragment_day_view,
+            container,
+            false
+        )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dayViewModel = ViewModelProviders.of(this).get(DayViewModel::class.java)
+        adapter = DayAdapter(this)
         initRecyclerView()
-        dayViewModel.text.observe(this, Observer {
-            adapter.updateAll(it.activitiesList)
-        })
-        return root
+        observeViewModel()
+        dayViewModel.checkCurrentDay()
     }
 
     private fun initRecyclerView() {
-        rvDayEvents.adapter = adapter
-        rvDayEvents.layoutManager = LinearLayoutManager(context)
+        rvDayEvents.apply{
+            adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+        }
+    }
+
+    fun observeViewModel() {
+
+        dayViewModel.dayData.observe(this, Observer {
+            adapter.updateAll(it.activitiesList)
+        })
+
+        dayViewModel.isLoading.observe(this, Observer<Boolean> {
+            rlBase.visibility = if(it) View.VISIBLE else View.GONE
+        })
     }
 
     override fun onClickItem(dayEvent: DayEvent) {
