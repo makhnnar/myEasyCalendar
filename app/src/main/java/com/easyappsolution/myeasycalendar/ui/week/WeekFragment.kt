@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.easyappsolution.myeasycalendar.R
 import com.easyappsolution.myeasycalendar.ui.day.data.DayModel
 import com.easyappsolution.myeasycalendar.ui.week.adapter.WeekAdapter
-import kotlinx.android.synthetic.main.fragment_day_view.*
+import kotlinx.android.synthetic.main.fragment_week_view.*
 
 class WeekFragment : Fragment(),WeekAdapter.OnClickItemListener {
 
@@ -38,7 +38,7 @@ class WeekFragment : Fragment(),WeekAdapter.OnClickItemListener {
     }
 
     private fun initRecyclerView() {
-        rvDayEvents.apply{
+        rvWeekDays.apply{
             adapter = adapter
             layoutManager = LinearLayoutManager(context)
         }

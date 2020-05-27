@@ -9,4 +9,16 @@
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="WeekView">
+
+    </declare-styleable>
+
+    <declare-styleable name="DayView">
+
+    </declare-styleable>
+
+    <declare-styleable name="MonthView">
+
+    </declare-styleable>
+
 </resources>

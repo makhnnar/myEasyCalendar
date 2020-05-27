@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdV01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".142"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdV02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".284"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdV03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".426"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdV04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".568"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdV05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".71"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdV06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".852"/>
+
+    <com.easyappsolution.myeasycalendar.ui.month.views.DayView
+        android:id="@+id/dv01"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/gdV01"/>
+
+    <com.easyappsolution.myeasycalendar.ui.month.views.DayView
+        android:id="@+id/dv02"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gdV01"
+        app:layout_constraintEnd_toStartOf="@id/gdV02"/>
+
+    <com.easyappsolution.myeasycalendar.ui.month.views.DayView
+        android:id="@+id/dv03"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gdV02"
+        app:layout_constraintEnd_toStartOf="@id/gdV03"/>
+
+    <com.easyappsolution.myeasycalendar.ui.month.views.DayView
+        android:id="@+id/dv04"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gdV03"
+        app:layout_constraintEnd_toStartOf="@id/gdV04"/>
+
+    <com.easyappsolution.myeasycalendar.ui.month.views.DayView
+        android:id="@+id/dv05"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gdV04"
+        app:layout_constraintEnd_toStartOf="@id/gdV05"/>
+
+    <com.easyappsolution.myeasycalendar.ui.month.views.DayView
+        android:id="@+id/dv06"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gdV05"
+        app:layout_constraintEnd_toStartOf="@id/gdV06"/>
+
+    <com.easyappsolution.myeasycalendar.ui.month.views.DayView
+        android:id="@+id/dv07"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gdV06"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,14 +21,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
             android:id="@+id/tvNameDay"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Almuerzo con cliente"
+            android:text="Lunes"
             android:textColor="@color/black_overlay"
             android:fontFamily="@font/montserrat_bold"
             app:layout_constraintEnd_toEndOf="parent"
