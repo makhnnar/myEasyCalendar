@@ -16,7 +16,7 @@ class MonthView @JvmOverloads constructor(
      * TODO:
      *  - Teminar esta vista
      *  - utilizar etiquetas merge para eliminar profundida de views
-     *  - usar un rv para las semanas, siendo el numero maximo posible de semanas 6
+     *  - usar un loop para colocar la cantidad de rows segun la semana
      *  - agregar listener a los dias dentro del view de semana
      *  - obtener el calendario a traves de las apis de calendario de android
      * */
