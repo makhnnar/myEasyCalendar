@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.easyappsolution.myeasycalendar.databinding.FragmentDayViewBinding
 import com.easyappsolution.myeasycalendar.ui.day.adapter.DayAdapter
-import com.easyappsolution.myeasycalendar.ui.day.data.DayEvent
+import com.easyappsolution.myeasycalendar.repos.models.DayEvent
 
 class DayFragment : Fragment(),DayAdapter.OnClickItemListener {
 

@@ -1,11 +1,9 @@
 package com.easyappsolution.myeasycalendar.ui.week
 
 import android.os.CountDownTimer
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.easyappsolution.myeasycalendar.ui.day.data.DayModel
-import com.easyappsolution.myeasycalendar.ui.week.data.WeekModel
+import com.easyappsolution.myeasycalendar.repos.models.WeekModel
 
 class WeekViewModel : ViewModel() {
 

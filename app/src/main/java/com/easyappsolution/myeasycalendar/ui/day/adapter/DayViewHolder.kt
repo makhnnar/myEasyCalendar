@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.easyappsolution.myeasycalendar.R
-import com.easyappsolution.myeasycalendar.ui.day.data.DayEvent
+import com.easyappsolution.myeasycalendar.repos.models.DayEvent
 
 class DayViewHolder(
     inflater: LayoutInflater,

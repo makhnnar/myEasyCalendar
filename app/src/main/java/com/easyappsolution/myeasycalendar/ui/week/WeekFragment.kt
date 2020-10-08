@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.easyappsolution.myeasycalendar.databinding.FragmentWeekViewBinding
-import com.easyappsolution.myeasycalendar.ui.day.data.DayModel
+import com.easyappsolution.myeasycalendar.repos.models.DayModel
 import com.easyappsolution.myeasycalendar.ui.week.adapter.WeekAdapter
 
 class WeekFragment : Fragment(),WeekAdapter.OnClickItemListener {

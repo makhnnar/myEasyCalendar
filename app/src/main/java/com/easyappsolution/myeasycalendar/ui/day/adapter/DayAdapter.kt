@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.easyappsolution.myeasycalendar.ui.day.data.DayEvent
+import com.easyappsolution.myeasycalendar.repos.models.DayEvent
 
 class DayAdapter(var onClickItemListener: OnClickItemListener) : RecyclerView.Adapter<DayViewHolder>() {
 
