@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.easyappsolution.myeasycalendar.R
+import com.easyappsolution.myeasycalendar.databinding.FragmentMonthViewBinding
 
 class MonthFragment : Fragment() {
+
+    private lateinit var binding : FragmentMonthViewBinding
 
     private lateinit var monthViewModel: MonthViewModel
 
@@ -21,10 +22,16 @@ class MonthFragment : Fragment() {
     ): View? {
         monthViewModel =
             ViewModelProviders.of(this).get(MonthViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_month_view, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
+
+        binding = FragmentMonthViewBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+        val root = binding.root
+
         monthViewModel.text.observe(this, Observer {
-            textView.text = it
+            binding.textNotifications.text = it
         })
         return root
     }

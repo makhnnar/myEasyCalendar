@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.easyappsolution.myeasycalendar.R
+import com.easyappsolution.myeasycalendar.databinding.FragmentWeekViewBinding
 import com.easyappsolution.myeasycalendar.ui.day.data.DayModel
 import com.easyappsolution.myeasycalendar.ui.week.adapter.WeekAdapter
-import kotlinx.android.synthetic.main.fragment_week_view.*
 
 class WeekFragment : Fragment(),WeekAdapter.OnClickItemListener {
+
+    private lateinit var binding : FragmentWeekViewBinding
 
     private lateinit var weekViewModel: WeekViewModel
 
@@ -25,7 +25,13 @@ class WeekFragment : Fragment(),WeekAdapter.OnClickItemListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_week_view, container, false)
+        binding = FragmentWeekViewBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+        val root = binding.root
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +44,7 @@ class WeekFragment : Fragment(),WeekAdapter.OnClickItemListener {
     }
 
     private fun initRecyclerView() {
-        rvWeekDays.apply{
+        binding.rvWeekDays.apply{
             adapter = adapter
             layoutManager = LinearLayoutManager(context)
         }
@@ -51,7 +57,7 @@ class WeekFragment : Fragment(),WeekAdapter.OnClickItemListener {
         })
 
         weekViewModel.isLoading.observe(this, Observer<Boolean> {
-            rlBase.visibility = if(it) View.VISIBLE else View.GONE
+            binding.rlBase.visibility = if(it) View.VISIBLE else View.GONE
         })
     }
 
