@@ -3,13 +3,18 @@ package com.easyappsolution.myeasycalendar.repos.models
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "dayevent_table")
 data class DayEvent(
+    @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")
     var id:String,
+    @NonNull
+    @ColumnInfo(name = "date")
+    var date:String,
     @NonNull
     @ColumnInfo(name = "title")
     var title:String,
