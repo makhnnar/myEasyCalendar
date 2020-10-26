@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.easyappsolution.myeasycalendar.R
 import com.easyappsolution.myeasycalendar.databinding.ActivityEventBinding
@@ -18,7 +19,7 @@ class EventActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEventBinding
 
-    private lateinit var dayViewModel: DayViewModel
+    private lateinit var dayViewModel: EventViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ class EventActivity : AppCompatActivity() {
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        dayViewModel = ViewModelProviders.of(this).get(DayViewModel::class.java)
+        dayViewModel = ViewModelProvider(this).get(EventViewModel::class.java)
     }
 
 }

@@ -8,10 +8,10 @@ import java.util.*
 
 @Entity(tableName = "dayevent_table")
 data class DayEvent(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id")
-    var id:String,
+    var id:Long,
     @NonNull
     @ColumnInfo(name = "date")
     var date:String,
@@ -23,11 +23,19 @@ data class DayEvent(
     var descripcion:String?,
     @NonNull
     @ColumnInfo(name = "horaInicio")
-    var horaInicio: Date,
+    var horaInicio: String,//cambiar este tipo de datos por un primitivo
     @NonNull
     @ColumnInfo(name = "horaFinal")
-    var horaFinal: Date,
+    var horaFinal: String,
     @NonNull
     @ColumnInfo(name = "isDestacada")
-    var isDestacada:Boolean
-)
+    var isDestacada:Boolean = false
+){
+    constructor(
+        date:String,
+        title: String,
+        descripcion: String,
+        horaInicio: String,
+        horaFinal: String
+    ) : this(0, date,title, descripcion,horaInicio,horaFinal)
+}

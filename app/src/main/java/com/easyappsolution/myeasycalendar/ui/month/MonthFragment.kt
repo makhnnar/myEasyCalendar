@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.easyappsolution.myeasycalendar.databinding.FragmentMonthViewBinding
 
@@ -21,7 +22,7 @@ class MonthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         monthViewModel =
-            ViewModelProviders.of(this).get(MonthViewModel::class.java)
+            ViewModelProvider(this).get(MonthViewModel::class.java)
 
         binding = FragmentMonthViewBinding.inflate(
             inflater,
@@ -30,7 +31,7 @@ class MonthFragment : Fragment() {
         )
         val root = binding.root
 
-        monthViewModel.text.observe(this, Observer {
+        monthViewModel.text.observe(viewLifecycleOwner, Observer {
             binding.textNotifications.text = it
         })
         return root

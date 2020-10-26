@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.easyappsolution.myeasycalendar.databinding.FragmentWeekViewBinding
@@ -36,7 +37,7 @@ class WeekFragment : Fragment(),WeekAdapter.OnClickItemListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        weekViewModel = ViewModelProviders.of(this).get(WeekViewModel::class.java)
+        weekViewModel = ViewModelProvider(this).get(WeekViewModel::class.java)
         adapter = WeekAdapter(this)
         initRecyclerView()
         observeViewModel()
@@ -52,11 +53,11 @@ class WeekFragment : Fragment(),WeekAdapter.OnClickItemListener {
 
     fun observeViewModel() {
 
-        weekViewModel.weekData.observe(this, Observer {
+        weekViewModel.weekData.observe(viewLifecycleOwner, Observer {
             adapter.updateAll(it.daysList)
         })
 
-        weekViewModel.isLoading.observe(this, Observer<Boolean> {
+        weekViewModel.isLoading.observe(viewLifecycleOwner, Observer<Boolean> {
             binding.rlBase.visibility = if(it) View.VISIBLE else View.GONE
         })
     }

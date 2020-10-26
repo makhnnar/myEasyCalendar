@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#0099cc"
     tools:context=".ui.event.EventActivity">
+
+    <EditText
+        android:id="@+id/nameEvent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_h_elem"
+        android:layout_margin="@dimen/activity_m_elem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/descriptionEvent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_h_elem"
+        android:layout_margin="@dimen/activity_m_elem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameEvent"/>
+
+    <DatePicker
+        android:id="@+id/iniEven"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_h_elem"
+        android:layout_margin="@dimen/activity_m_elem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionEvent"/>
+
+    <DatePicker
+        android:id="@+id/endEven"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_h_elem"
+        android:layout_margin="@dimen/activity_m_elem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iniEven"/>
+
+    <Button
+        android:id="@+id/saveEvent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_h_elem"
+        android:layout_margin="@dimen/activity_m_elem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/endEven"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

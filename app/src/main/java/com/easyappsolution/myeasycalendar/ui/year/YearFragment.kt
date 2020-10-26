@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.easyappsolution.myeasycalendar.databinding.FragmentDayViewBinding
 
@@ -21,7 +22,7 @@ class YearFragment : Fragment()  {
         savedInstanceState: Bundle?
     ): View? {
         yearViewModel =
-            ViewModelProviders.of(this).get(YearViewModel::class.java)
+            ViewModelProvider(this).get(YearViewModel::class.java)
 
         binding = FragmentDayViewBinding.inflate(
             inflater,

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.easyappsolution.myeasycalendar.repos.models.DayEvent
 import java.util.concurrent.Executors
 
-@Database(entities = [DayEvent::class], version = 1, exportSchema = false)
+@Database(entities = [DayEvent::class], version = 1)
 abstract class EventsDatabase : RoomDatabase() {
 
     abstract fun events(): DayEventDao
