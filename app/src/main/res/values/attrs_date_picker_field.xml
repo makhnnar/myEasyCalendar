@@ -1,0 +1,4 @@
+<resources>
+    <declare-styleable name="DatePickerField">
+    </declare-styleable>
+</resources>
