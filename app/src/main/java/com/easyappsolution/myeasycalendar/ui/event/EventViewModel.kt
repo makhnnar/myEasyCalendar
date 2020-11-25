@@ -32,17 +32,20 @@ class EventViewModel(application: Application) : AndroidViewModel(application) {
     fun saveEvent(
         title:String,
         description:String,
-        hIni: Date,
-        hFin: Date,
-        date:String
+        hIni: String,
+        hFin: String
     ) = viewModelScope.launch(Dispatchers.IO) {
         //processBegin()
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
         var event = DayEvent(
-            date,
+            "$day/${month + 1}/$year",
             title,
             description,
-            hIni.toString(),
-            hFin.toString()
+            hIni,
+            hFin
         )
         repository.insert(
             event

@@ -14,6 +14,13 @@ import kotlinx.android.synthetic.main.activity_event.*
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
+ * TODO:
+ *  - obtener datos de los view y guardar en bd
+ *  - leer datos de bd una vez guardados
+ *  - la fecha de fin debe ser igual o mayor a la fecha de incio
+ *  - agregar la posibilidad de colocar eventos recurrentes, siempre o por periodo
+ *  - agregar alerta de que los campos estan mal introducidos
+ *
  */
 class EventActivity : AppCompatActivity() {
 
@@ -31,6 +38,16 @@ class EventActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         dayViewModel = ViewModelProvider(this).get(EventViewModel::class.java)
+    }
+
+    fun saveValues(v:View){
+        dayViewModel.saveEvent(
+            binding.nameEvent.text.toString(),
+            binding.descriptionEvent.text.toString(),
+            binding.iniEven.getDate().toString(),
+            binding.endEven.getDate().toString()
+        )
+        this.finish()
     }
 
 }

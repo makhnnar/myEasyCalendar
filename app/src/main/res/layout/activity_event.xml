@@ -48,6 +48,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_h_elem"
         android:layout_margin="@dimen/activity_m_elem"
+        android:text="@string/guardar"
+        android:onClick="saveValues"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/endEven"/>

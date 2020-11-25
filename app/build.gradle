@@ -48,6 +48,7 @@ dependencies {
 
     // Room components
     implementation "androidx.room:room-runtime:$roomVersion"
+    debugImplementation 'com.idescout.sql:sqlscout-server:4.1'
     kapt "androidx.room:room-compiler:$roomVersion"
     androidTestImplementation "androidx.room:room-testing:$roomVersion"
 
@@ -58,4 +59,5 @@ dependencies {
     // Kotlin components
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+    releaseImplementation 'com.idescout.sql:sqlscout-server-noop:4.1'
 }

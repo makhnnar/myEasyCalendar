@@ -10,6 +10,7 @@ import com.easyappsolution.myeasycalendar.repos.EventsDatabase
 import com.easyappsolution.myeasycalendar.repos.EventsRepository
 import com.easyappsolution.myeasycalendar.repos.models.DayEvent
 import com.easyappsolution.myeasycalendar.repos.models.DayModel
+import java.util.*
 
 class DayViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -17,7 +18,7 @@ class DayViewModel(application: Application) : AndroidViewModel(application) {
 
     var dayData =  MutableLiveData<DayModel>()
 
-    var eventsData : LiveData<List<DayEvent>>
+    lateinit var eventsData : LiveData<List<DayEvent>>
 
     var isLoading = MutableLiveData<Boolean>().apply {
         value = false
@@ -26,31 +27,18 @@ class DayViewModel(application: Application) : AndroidViewModel(application) {
     init {
         val wordsDao = EventsDatabase.getDatabase(application).events()
         repository = EventsRepository(wordsDao)
-        eventsData = repository.getEventsOnDay("22/03/2020")
+        checkCurrentDay()
     }
 
     //simulamos la llamada asincrona
     fun checkCurrentDay(){
         processBegin()
-        object: CountDownTimer(2000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-
-            }
-            override fun onFinish() {
-                dayData.postValue(
-                    DayModel(
-                        "1",
-                        33,
-                        33,
-                        12,
-                        12,
-                        "martes",
-                        mutableListOf()
-                    )
-                )
-                processFinished()
-            }
-        }.start()
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        eventsData = repository.getEventsOnDay("$day/${month + 1}/$year")
+        processFinished()
     }
 
     private fun processFinished() {
