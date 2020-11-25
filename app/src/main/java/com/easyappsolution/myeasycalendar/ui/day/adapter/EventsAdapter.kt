@@ -27,8 +27,8 @@ class EventsAdapter(
 
     override fun getItemCount(): Int {
         Log.i("DATA", " size: getItemCount: ${dayEvents.size}")
-        //return dayEvents.size
-        return 4
+        return dayEvents.size
+        //return 4
     }
 
     override fun onBindViewHolder(
@@ -43,11 +43,13 @@ class EventsAdapter(
         holder: EventsViewHolder,
         position: Int
     ) {
-        holder.setData(
-            dayEvents[position]!!,
-            position,
-            onClickItemListener
-        )
+        if(dayEvents.isNotEmpty()){
+            holder.setData(
+                dayEvents[position]!!,
+                position,
+                onClickItemListener
+            )
+        }
     }
 
     fun updateAll(update: List<DayEvent>) {

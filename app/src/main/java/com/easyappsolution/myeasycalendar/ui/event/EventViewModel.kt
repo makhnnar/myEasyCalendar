@@ -2,6 +2,7 @@ package com.easyappsolution.myeasycalendar.ui.event
 
 import android.app.Application
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,6 +15,8 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class EventViewModel(application: Application) : AndroidViewModel(application) {
+
+    val TAG = EventViewModel::class.java.simpleName
 
     private val repository: EventsRepository
 
@@ -47,9 +50,14 @@ class EventViewModel(application: Application) : AndroidViewModel(application) {
             hIni,
             hFin
         )
-        repository.insert(
+        val result = repository.insert(
             event
         )
+        if (result > -1) {
+            Log.i(TAG, "saveEvent: Elemento agregado")
+        }else{
+            Log.i(TAG, "saveEvent: Elemento no agregado. Error")
+        }
     }
 
     private fun processFinished() {

@@ -24,7 +24,7 @@ interface DayEventDao {
     fun getEventById(id: String?): LiveData<DayEvent>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(dayEvent: DayEvent)
+    fun insert(dayEvent: DayEvent): Long
 
     @Query("DELETE FROM dayevent_table")
     fun deleteAll()

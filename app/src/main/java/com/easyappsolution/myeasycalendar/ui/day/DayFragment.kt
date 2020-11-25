@@ -49,10 +49,10 @@ class DayFragment : Fragment(),
     }
 
     private fun initRecyclerView(dayEvents: List<DayEvent?>) {
-        adapter = EventsAdapter(this, dayEvents)
+        //adapter = EventsAdapter(this, dayEvents)
         binding.rvDayEvents.apply{
-            adapter = adapter
-            layoutManager = LinearLayoutManager(context)
+            adapter = EventsAdapter(this@DayFragment, dayEvents)
+            layoutManager = LinearLayoutManager(this@DayFragment.context)
         }
     }
 

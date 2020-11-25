@@ -16,8 +16,8 @@ class EventsRepository(private val mSessionDao: DayEventDao) {
         return mSessionDao.getEventById(idEvent)
     }
 
-    suspend fun insert(dayEvent: DayEvent) {
-        mSessionDao.insert(
+    suspend fun insert(dayEvent: DayEvent) : Long {
+        return mSessionDao.insert(
             dayEvent
         )
     }
