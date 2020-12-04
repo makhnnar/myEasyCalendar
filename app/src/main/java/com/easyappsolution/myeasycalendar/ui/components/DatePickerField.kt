@@ -13,6 +13,7 @@ import android.widget.DatePicker
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.easyappsolution.myeasycalendar.R
 import kotlinx.android.synthetic.main.date_picker_field.view.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -20,6 +21,8 @@ import java.util.*
  */
 class DatePickerField : ConstraintLayout, OnDateSetListener,
     OnClickListener {
+
+    private var selectedDay : Long? = null
 
     constructor(context: Context) : super(context) {
         init(null, 0)
@@ -62,12 +65,19 @@ class DatePickerField : ConstraintLayout, OnDateSetListener,
         month: Int,
         dayOfMonth: Int
     ) {
-        val birthDay = Calendar.getInstance()
+        val calendar = Calendar.getInstance()
 
-        birthDay.clear()
-        birthDay[Calendar.YEAR] = year
-        birthDay[Calendar.MONTH] = month
-        birthDay[Calendar.DAY_OF_MONTH] = dayOfMonth
+        calendar.set(
+            year,
+            month,
+            dayOfMonth
+        )
+
+        val date = calendar.time
+
+        selectedDay = date.time
+
+        println("Date : $selectedDay")
 
         etDate.setText("$dayOfMonth/${month + 1}/$year")
     }
@@ -86,7 +96,6 @@ class DatePickerField : ConstraintLayout, OnDateSetListener,
                 month,
                 day
             )
-            dialog.datePicker.maxDate = Date().time
             dialog.window!!.setBackgroundDrawable(
                 ColorDrawable(
                     Color.LTGRAY
@@ -96,6 +105,10 @@ class DatePickerField : ConstraintLayout, OnDateSetListener,
         }
     }
 
-    fun getDate() = etDate.text
+    fun getDateAsString() = etDate.text
+
+    fun getDateAsLong():Long{
+        return selectedDay?:0L
+    }
 
 }

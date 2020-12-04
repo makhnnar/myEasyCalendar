@@ -37,7 +37,7 @@ class DayViewModel(application: Application) : AndroidViewModel(application) {
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
-        eventsData = repository.getEventsOnDay("$day/${month + 1}/$year")
+        eventsData = repository.getEventsOnDay(c.timeInMillis)
         processFinished()
     }
 

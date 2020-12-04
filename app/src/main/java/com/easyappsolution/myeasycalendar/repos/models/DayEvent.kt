@@ -23,10 +23,10 @@ data class DayEvent(
     var descripcion:String?,
     @NonNull
     @ColumnInfo(name = "horaInicio")
-    var horaInicio: String,//cambiar este tipo de datos por un primitivo
+    var horaInicio: Long,//cambiar este tipo de datos por un primitivo
     @NonNull
     @ColumnInfo(name = "horaFinal")
-    var horaFinal: String,
+    var horaFinal: Long,
     @NonNull
     @ColumnInfo(name = "isDestacada")
     var isDestacada:Boolean = false
@@ -35,7 +35,7 @@ data class DayEvent(
         date:String,
         title: String,
         descripcion: String,
-        horaInicio: String,
-        horaFinal: String
+        horaInicio: Long,
+        horaFinal: Long
     ) : this(0, date,title, descripcion,horaInicio,horaFinal)
 }

@@ -1,14 +1,13 @@
 package com.easyappsolution.myeasycalendar.repos
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.easyappsolution.myeasycalendar.repos.models.DayEvent
 
 class EventsRepository(private val mSessionDao: DayEventDao) {
 
-    fun getEventsOnDay(date:String): LiveData<List<DayEvent>> {
+    fun getEventsOnDay(date:Long): LiveData<List<DayEvent>> {
         return mSessionDao.getEventsByDate(
-            //date
+            date
         )
     }
 

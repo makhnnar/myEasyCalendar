@@ -2,14 +2,9 @@ package com.easyappsolution.myeasycalendar.ui.event
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import com.easyappsolution.myeasycalendar.R
 import com.easyappsolution.myeasycalendar.databinding.ActivityEventBinding
-import com.easyappsolution.myeasycalendar.ui.day.DayViewModel
-import kotlinx.android.synthetic.main.activity_event.*
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -44,8 +39,8 @@ class EventActivity : AppCompatActivity() {
         dayViewModel.saveEvent(
             binding.nameEvent.text.toString(),
             binding.descriptionEvent.text.toString(),
-            binding.iniEven.getDate().toString(),
-            binding.endEven.getDate().toString()
+            binding.iniEven.getDateAsLong(),
+            binding.endEven.getDateAsLong()
         )
         this.finish()
     }

@@ -35,8 +35,8 @@ class EventViewModel(application: Application) : AndroidViewModel(application) {
     fun saveEvent(
         title:String,
         description:String,
-        hIni: String,
-        hFin: String
+        hIni: Long,
+        hFin: Long
     ) = viewModelScope.launch(Dispatchers.IO) {
         //processBegin()
         val c = Calendar.getInstance()
