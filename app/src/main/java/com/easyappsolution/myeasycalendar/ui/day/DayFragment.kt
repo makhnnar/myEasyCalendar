@@ -46,6 +46,8 @@ class DayFragment : Fragment(),
         observeViewModel()
         dayViewModel.checkCurrentDay()
         binding.addEvent.setOnClickListener(this)
+        binding.ivMoveLeft.setOnClickListener(this)
+        binding.ivMoveRight.setOnClickListener(this)
     }
 
     private fun initRecyclerView(dayEvents: List<DayEvent?>) {
@@ -67,6 +69,12 @@ class DayFragment : Fragment(),
         dayViewModel.isLoading.observe(viewLifecycleOwner, Observer<Boolean> {
             binding.rlBase.visibility = if(it) View.VISIBLE else View.GONE
         })
+
+        dayViewModel.dayString.observe(viewLifecycleOwner, Observer {
+            if(it!=null){
+                binding.tvDayLabel.text = it
+            }
+        })
     }
 
     override fun onClickItem(dayEvent: DayEvent) {
@@ -82,6 +90,12 @@ class DayFragment : Fragment(),
                         EventActivity::class.java
                     )
                 )
+            }
+            binding.ivMoveLeft -> {
+                dayViewModel.getPrevDay()
+            }
+            binding.ivMoveRight -> {
+                dayViewModel.getNextDay()
             }
         }
     }

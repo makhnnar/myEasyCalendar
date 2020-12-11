@@ -13,7 +13,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDayLabel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:listitem="@layout/view_holder_event" />
@@ -40,6 +40,8 @@
         android:id="@+id/tvDayLabel"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:textAlignment="center"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toLeftOf="@id/ivMoveRight"
         app:layout_constraintLeft_toRightOf="@id/ivMoveLeft"

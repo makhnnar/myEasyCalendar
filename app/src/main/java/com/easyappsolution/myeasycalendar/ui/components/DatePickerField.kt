@@ -73,9 +73,7 @@ class DatePickerField : ConstraintLayout, OnDateSetListener,
             dayOfMonth
         )
 
-        val date = calendar.time
-
-        selectedDay = date.time
+        selectedDay = calendar.timeInMillis
 
         println("Date : $selectedDay")
 

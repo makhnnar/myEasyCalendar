@@ -2,6 +2,7 @@ package com.easyappsolution.myeasycalendar.ui.day
 
 import android.app.Application
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,6 +19,10 @@ class DayViewModel(application: Application) : AndroidViewModel(application) {
 
     var dayData =  MutableLiveData<DayModel>()
 
+    var dayString =  MutableLiveData<String>()
+
+    var dayDifference = 0L
+
     lateinit var eventsData : LiveData<List<DayEvent>>
 
     var isLoading = MutableLiveData<Boolean>().apply {
@@ -30,15 +35,39 @@ class DayViewModel(application: Application) : AndroidViewModel(application) {
         checkCurrentDay()
     }
 
-    //simulamos la llamada asincrona
     fun checkCurrentDay(){
+        calculateDay(0)
+    }
+
+    private fun calculateDay(dayDiff:Long){
         processBegin()
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-        eventsData = repository.getEventsOnDay(c.timeInMillis)
+
+        dayDifference += dayDiff
+
+        val currentDate = Calendar.getInstance()
+
+        val newDate = Calendar.getInstance()
+
+        newDate.timeInMillis = currentDate.timeInMillis + dayDifference
+
+        val year = newDate.get(Calendar.YEAR)
+        val month = newDate.get(Calendar.MONTH)
+        val day = newDate.get(Calendar.DAY_OF_MONTH)
+
+        dayString.value = "$day/${month + 1}/$year"
+
+        Log.i("mills","${newDate.timeInMillis}")
+
+        eventsData = repository.getEventsOnDay(newDate.timeInMillis)
         processFinished()
+    }
+
+    fun getPrevDay(){
+        calculateDay(-86400000L)
+    }
+
+    fun getNextDay(){
+        calculateDay(86400000L)
     }
 
     private fun processFinished() {
