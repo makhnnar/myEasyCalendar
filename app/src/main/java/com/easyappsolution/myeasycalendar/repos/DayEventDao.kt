@@ -1,7 +1,6 @@
 package com.easyappsolution.myeasycalendar.repos
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -19,7 +18,7 @@ interface DayEventDao {
     fun getAllEvents(): LiveData<List<DayEvent>>
 
     @Query("SELECT * from dayevent_table WHERE dayevent_table.horaInicio <= :idDay AND dayevent_table.horaFinal >= :idDay")
-    fun getEventsByDate(idDay: Long?): LiveData<List<DayEvent>>
+    fun getEventsByDate(idDay: Long?): List<DayEvent>
 
     @Query("SELECT * from dayevent_table WHERE dayevent_table.id= :id")
     fun getEventById(id: String?): LiveData<DayEvent>

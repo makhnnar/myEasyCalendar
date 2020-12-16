@@ -3,14 +3,13 @@ package com.easyappsolution.myeasycalendar.ui.day
 import android.app.Application
 import android.os.CountDownTimer
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.easyappsolution.myeasycalendar.repos.EventsDatabase
 import com.easyappsolution.myeasycalendar.repos.EventsRepository
 import com.easyappsolution.myeasycalendar.repos.models.DayEvent
 import com.easyappsolution.myeasycalendar.repos.models.DayModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 
 class DayViewModel(application: Application) : AndroidViewModel(application) {
@@ -23,7 +22,7 @@ class DayViewModel(application: Application) : AndroidViewModel(application) {
 
     var dayDifference = 0L
 
-    lateinit var eventsData : LiveData<List<DayEvent>>
+    var eventsData = MutableLiveData<List<DayEvent>>()
 
     var isLoading = MutableLiveData<Boolean>().apply {
         value = false
@@ -39,27 +38,33 @@ class DayViewModel(application: Application) : AndroidViewModel(application) {
         calculateDay(0)
     }
 
-    private fun calculateDay(dayDiff:Long){
-        processBegin()
+    private fun calculateDay(dayDiff:Long) = viewModelScope.launch(Dispatchers.IO){
+            //processBegin()
 
-        dayDifference += dayDiff
+            dayDifference += dayDiff
 
-        val currentDate = Calendar.getInstance()
+            val currentDate = Calendar.getInstance()
 
-        val newDate = Calendar.getInstance()
+            val newDate = Calendar.getInstance()
 
-        newDate.timeInMillis = currentDate.timeInMillis + dayDifference
+            newDate.timeInMillis = currentDate.timeInMillis + dayDifference
 
-        val year = newDate.get(Calendar.YEAR)
-        val month = newDate.get(Calendar.MONTH)
-        val day = newDate.get(Calendar.DAY_OF_MONTH)
+            val year = newDate.get(Calendar.YEAR)
+            val month = newDate.get(Calendar.MONTH)
+            val day = newDate.get(Calendar.DAY_OF_MONTH)
 
-        dayString.value = "$day/${month + 1}/$year"
+            dayString.postValue(
+                "$day/${month + 1}/$year"
+            )
 
-        Log.i("mills","${newDate.timeInMillis}")
-
-        eventsData = repository.getEventsOnDay(newDate.timeInMillis)
-        processFinished()
+            Log.i("mills","${newDate.timeInMillis}")
+            //todo: checkear por q no actualiza la vista al cambiar de dia
+            eventsData.postValue(
+                repository.getEventsOnDay(
+                    newDate.timeInMillis
+                )
+            )
+            //processFinished()
     }
 
     fun getPrevDay(){
@@ -71,10 +76,10 @@ class DayViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun processFinished() {
-        isLoading.value = true
+        isLoading.postValue( true)
     }
 
     private fun processBegin() {
-        isLoading.value = false
+        isLoading.postValue(false)
     }
 }
